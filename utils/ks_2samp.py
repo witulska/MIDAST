@@ -14,11 +14,12 @@ def boundary_for_pval(value):
 
 
 def p_value_from_crit_value_one_sample(t_s, n, d):
-    return boundary_for_pval(d * (n + 1) * np.exp(-2 * n * (t_s**2)))
+    return boundary_for_pval(2 * d  * np.exp(-2 * n * (t_s**2)))
 
 
 def p_value_from_crit_value_two_sample(t_s, n, d):
-    return boundary_for_pval(d * (n + 1) * np.exp(-n / 2 * (t_s**2)))
+    # fix: const. Thanks to M. Marszewska
+    return boundary_for_pval(2 * d * (n + 1) * np.exp(-n / 2 * (t_s**2)))
 
 
 def mecdf(x_val: np.ndarray, t: np.ndarray) -> float:
